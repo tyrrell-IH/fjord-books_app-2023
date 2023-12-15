@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05f4d0be-9175-4d42-abc1-253d40e90070" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/fjord-books_app-2023.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fjord-books_app-2023.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +136,7 @@
       <option name="presentableId" value="Default" />
       <updated>1702612646909</updated>
       <workItem from="1702612648085" duration="4369000" />
-      <workItem from="1702617386882" duration="839000" />
+      <workItem from="1702617386882" duration="1773000" />
     </task>
     <servers />
   </component>
