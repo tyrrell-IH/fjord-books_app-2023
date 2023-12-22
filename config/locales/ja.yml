@@ -189,10 +189,6 @@ ja:
     Edit this book: 書籍の編集
     Back to books: 書籍一覧
     Destroy this book: この書籍を削除
-    Title: タイトル
-    Memo: メモ
-    Author: 著者
-    Picture: 写真
   message:
     create_notice: 書籍が正常に追加されました。
     update_notice: 書籍が正常に更新されました。
