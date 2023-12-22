@@ -1,7 +1,7 @@
 ja:
   activerecord:
     models:
-      book: 本  #g
+      book: 書籍  #g
 
     attributes:
       book:
