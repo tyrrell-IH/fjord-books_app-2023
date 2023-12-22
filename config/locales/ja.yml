@@ -182,7 +182,6 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
   book:
-    Books: 書籍
     New book: 書籍の追加
     Editing book: 書籍の編集
     Show this book: 書籍の詳細
