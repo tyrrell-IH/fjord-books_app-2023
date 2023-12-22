@@ -5,6 +5,8 @@ ja:
     Memo: メモ
     Author: 著者
     Picture: 写真
+  button:
+    destroy: "この%{name}を削除"
   message:
     create_notice: "%{name}が正常に追加されました。"
     update_notice: "%{name}が正常に更新されました。"

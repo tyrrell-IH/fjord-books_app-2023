@@ -1,4 +1,6 @@
 en:
+  button:
+    destroy: "Destroy this %{name}"
   message:
     create_notice: "%{name} was successfully created."
     update_notice: "%{name} was successfully updated."
