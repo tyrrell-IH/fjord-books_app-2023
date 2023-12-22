@@ -1,5 +1,5 @@
 en:
   message:
-    create_notice: Book was successfully created.
-    update_notice: Book was successfully updated.
-    delete_notice: Book was successfully destroyed.
+    create_notice: "%{name} was successfully created."
+    update_notice: "%{name} was successfully updated."
+    destroy_notice: "%{name} was successfully destroyed."
