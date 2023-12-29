@@ -1,7 +1,7 @@
 en:
   book:
-    New book: 'New book'
-    Editing book: 'Editing book'
+    new_book: 'New book'
+    editing_book: 'Editing book'
   button:
     destroy: "Destroy this %{name}"
   link:

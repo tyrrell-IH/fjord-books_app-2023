@@ -1,8 +1,8 @@
 ja:
   book:
     Books: 書籍一覧
-    New book: 新規の書籍
-    Editing book: 書籍の編集
+    new_book: 新規の書籍
+    editing_book: 書籍の編集
     Title: タイトル
     Memo: メモ
     Author: 著者
