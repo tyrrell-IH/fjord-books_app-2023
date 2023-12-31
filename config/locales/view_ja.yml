@@ -1,8 +1,10 @@
 ja:
-  book:
-    Books: 書籍一覧
-    new_book: 新規の書籍
-    editing_book: 書籍の編集
+  Books: 書籍一覧
+  books:
+    new:
+      new_title: '新規の書籍'
+    edit:
+      edit_title: '書籍の編集'
   button:
     destroy: "この%{name}を削除"
   link:
