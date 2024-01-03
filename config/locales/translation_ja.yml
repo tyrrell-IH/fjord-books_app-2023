@@ -1,7 +1,9 @@
 ja:
   activerecord:
     models:
-      book: 書籍
+      book:
+        one: 書籍
+        other: 書籍一覧
 
     attributes:
       book:

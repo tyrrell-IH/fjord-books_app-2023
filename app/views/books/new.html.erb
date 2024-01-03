@@ -5,5 +5,5 @@
 <br>
 
 <nav class="page-nav">
-  <%= link_to t("link.back", name: Book.model_name.human.pluralize(I18n.locale).downcase ), books_path %>
+  <%= link_to t("link.back", name: Book.model_name.human(count: 2).downcase ), books_path %>
 </nav>

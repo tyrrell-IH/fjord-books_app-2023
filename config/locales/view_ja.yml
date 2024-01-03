@@ -1,5 +1,4 @@
 ja:
-  Books: 書籍一覧
   books:
     new:
       new_title: '新規の書籍'
@@ -11,7 +10,7 @@ ja:
     new: "%{name}を追加する"
     edit: "%{name}を編集する"
     show: "%{name}の詳細を表示する"
-    back: "%{name}一覧へ戻る"
+    back: "%{name}へ戻る"
   message:
     create_notice: "%{name}が正常に追加されました。"
     update_notice: "%{name}が正常に更新されました。"
