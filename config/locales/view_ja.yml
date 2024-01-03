@@ -1,9 +1,9 @@
 ja:
   books:
     new:
-      new_title: '新規の書籍'
+      new_title: 新規の書籍
     edit:
-      edit_title: '書籍の編集'
+      edit_title: 書籍の編集
   button:
     destroy: "この%{name}を削除"
   link:
