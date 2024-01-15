@@ -1,0 +1,17 @@
+ja:
+  books:
+    new:
+      new_title: 新規の書籍
+    edit:
+      edit_title: 書籍の編集
+  button:
+    destroy: "この%{name}を削除"
+  link:
+    new: "%{name}を追加する"
+    edit: "%{name}を編集する"
+    show: "%{name}の詳細を表示する"
+    back: "%{name}へ戻る"
+  message:
+    create_notice: "%{name}が正常に追加されました。"
+    update_notice: "%{name}が正常に更新されました。"
+    destroy_notice: "%{name}が正常に削除されました。"

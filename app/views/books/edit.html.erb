@@ -1,10 +1,10 @@
-<h1>Editing book</h1>
+<h1><%= t(".edit_title") %></h1>
 
 <%= render "form", book: @book %>
 
 <br>
 
-<div>
-  <%= link_to "Show this book", @book %> |
-  <%= link_to "Back to books", books_path %>
-</div>
+<nav class="page-nav">
+  <%= link_to t("link.show", name: Book.model_name.human.downcase), @book %> |
+  <%= link_to t("link.back", name: Book.model_name.human(count: 2).downcase), books_path %>
+</nav>

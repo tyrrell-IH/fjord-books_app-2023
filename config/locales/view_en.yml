@@ -1,0 +1,17 @@
+en:
+  books:
+    new:
+      new_title: New book
+    edit:
+      edit_title: Editing book
+  button:
+    destroy: "Destroy this %{name}"
+  link:
+    new: "New %{name}"
+    edit: "Edit this %{name}"
+    show: "Show this %{name}"
+    back: "Back to %{name}"
+  message:
+    create_notice: "%{name} was successfully created."
+    update_notice: "%{name} was successfully updated."
+    destroy_notice: "%{name} was successfully destroyed."
