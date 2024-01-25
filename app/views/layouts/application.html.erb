@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>BooksApp</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+  <head>
+    <title>BooksApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_importmap_tags %>
-</head>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
 
-<body class="<%= params[:action] %>">
-<header>
-  <% if user_signed_in? %>
-    <p>Logged in : <%= current_user.email %> :
-    <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %></p>
-  <% else %>
-    <%= link_to "Sign in", new_user_session_path %>
-  <% end %>
-</header>
-<p style="color: green"><%= notice %></p>
-<p style="color: red"><%= alert %></p>
+  <body class="<%= params[:action] %>">
+    <header>
+      <% if user_signed_in? %>
+        <p>Logged in : <%= current_user.email %> :
+        <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %></p>
+      <% else %>
+        <%= link_to "Sign in", new_user_session_path %>
+      <% end %>
+    </header>
+    <p style="color: green"><%= notice %></p>
+    <p style="color: red"><%= alert %></p>
 
-<%= yield %>
-</body>
+    <%= yield %>
+  </body>
 </html>
