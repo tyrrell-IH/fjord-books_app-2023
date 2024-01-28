@@ -14,7 +14,7 @@
     <header>
       <div>
         <nav>
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav">
             <% if user_signed_in? %>
               <li><%= link_to t('views.links.log_out'), destroy_user_session_path, data: { turbo_method: :delete } %> [<%= current_user.email %>]</li>
             <% else %>
