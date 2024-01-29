@@ -6,5 +6,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :zip_code, format: { with: /\A\d{3}-\d{4}\z/,
-                                 message: :invalid_zip_code, allow_nil: true }
+                                 message: :invalid_zip_code }, allow_blank: true
 end
