@@ -44,7 +44,7 @@ end
 
 50.times do |n|
   User.create!(
-    email: "sample#{n}@sample.com",
+    email: "sample#{n}@example.com",
     zip_code: "#{('001'..'999').to_a.sample}-#{('0001'..'9999').to_a.sample}",
     address: "東京都サンプル#{n}丁目",
     introduction: "#{n}回目の登録です!よろしくお願いします!!",
