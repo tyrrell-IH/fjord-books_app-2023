@@ -16,6 +16,6 @@
 
   <p>
     <strong><%= User.human_attribute_name(:introduction) %>:</strong>
-    <%= user.introduction %>
+    <%= safe_join(user.introduction.split("\n"),tag(:br)) %>
   </p>
 </div>
