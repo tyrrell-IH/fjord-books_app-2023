@@ -75,4 +75,13 @@ User.order(:id).each.with_index(1) do |user, n|
   user.avatar.attach(io: File.open(image_path), filename: 'avatar.png')
 end
 
+50.times do |n|
+  Report.create!(
+    title: "タイトルサンプル#{n}",
+    body: "内容サンプル#{n}です。\n\nよろしくお願いします",
+    user_id: User.all.ids.sample,
+    created_at: Time.now - 3600 * n
+  )
+end
+
 puts '初期データの投入が完了しました。' # rubocop:disable Rails/Output
