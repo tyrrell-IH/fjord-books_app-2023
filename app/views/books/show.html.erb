@@ -10,3 +10,19 @@
 
   <%= button_to t('views.common.destroy', name: Book.model_name.human.downcase), @book, method: :delete %>
 </nav>
+
+<% @book.comment.each do |c| %>
+  <p><%= c.body %></p>
+<% end %>
+
+<%= form_with( model: [@book, @comment] ) do |form| %>
+  <div>
+    <%= form.label :to_comment, style: "display: block" %>
+    <%= form.text_area :body %>
+    <%= form.hidden_field :commentable_type, :value => @book.model_name.name %>
+    <%= form.hidden_field :commentable_id, :value => @book.id%>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
