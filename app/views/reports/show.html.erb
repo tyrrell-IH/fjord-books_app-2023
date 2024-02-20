@@ -10,3 +10,11 @@
 
   <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete %>
 </nav>
+
+<div>
+  <%= render "comments/comment" %>
+</div>
+
+<div>
+  <%= render "comments/form" %>
+</div>

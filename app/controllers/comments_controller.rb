@@ -3,9 +3,9 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to book_path(comment_params[:commentable_id]), notice: 'comment saved' }
+        format.html { redirect_back(fallback_location: root_path, notice: "comment saved") }
       else
-        format.html { redirect_to book_path(comment_params[:commentable_id]), alert: 'comment not saved' }
+        format.html { redirect_back(fallback_location: root_path, alert: "comment not saved") }
       end
     end
   end

@@ -8,6 +8,8 @@ class ReportsController < ApplicationController
 
   # GET /reports/1 or /reports/1.json
   def show
+    @comment = @report.comment.new
+    @commentable = @report
   end
 
   # GET /reports/new
