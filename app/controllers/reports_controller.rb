@@ -56,7 +56,7 @@ class ReportsController < ApplicationController
         @report.destroy
         format.html { redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human) }
       else
-        format.html { redirect_back(fallback_location: root_path, notice: "Report was not destroyed.") }
+        format.html { redirect_back(fallback_location: root_path, alert: t('controllers.common.notice_cannot_destroy', name: Report.model_name.human)) }
       end
     end
   end

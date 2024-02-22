@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_back(fallback_location: root_path, notice: t('controllers.common.notice_create', name: Comment.model_name.human)) }
       else
-        format.html { redirect_back(fallback_location: root_path, alert: "comment not saved") }
+        format.html { redirect_back(fallback_location: root_path, alert: t('controllers.common.notice_cannot_create', name: Comment.model_name.human)) }
       end
     end
   end
@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
         @comment.destroy
         format.html { redirect_back(fallback_location: root_path, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)) }
       else
-        format.html { redirect_back(fallback_location: root_path, notice: "Report was not destroyed.") }
+        format.html { redirect_back(fallback_location: root_path, alert: t('controllers.common.notice_cannot_destroy', name: Comment.model_name.human)) }
       end
     end
   end
