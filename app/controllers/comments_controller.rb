@@ -10,7 +10,17 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @comment = Comment.find(params[:id])
+    respond_to do |format|
+      if @comment.user_id == current_user.id
+        @comment.destroy
+        format.html { redirect_back(fallback_location: root_path, notice: "Report was successfully destroyed.") }
+      else
+        format.html { redirect_back(fallback_location: root_path, notice: "Report was not destroyed.") }
+      end
+    end
+  end
 
   private
 
