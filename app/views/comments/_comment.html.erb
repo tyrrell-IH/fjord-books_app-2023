@@ -4,7 +4,11 @@
   <div class='comment-item'>
     <p>
       <strong><%= User.human_attribute_name(:name) %>:</strong>
-      <%= c.user.name %>
+      <% if c.user.name.empty? %>
+        <%= link_to c.user.email, c.user %>
+      <% else %>
+        <%= link_to c.user.name, c.user %>
+      <% end %>
     </p>
 
     <p>

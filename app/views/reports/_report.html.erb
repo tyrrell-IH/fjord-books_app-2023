@@ -6,7 +6,11 @@
 
   <p>
     <strong> <%= User.human_attribute_name(:name) %>:</strong>
-    <%= report.user.name %>
+    <% if  report.user.name.empty? %>
+      <%= link_to report.user.email, report.user %>
+    <% else %>
+      <%= link_to report.user.name, report.user %>
+    <% end %>
   </p>
 
   <p>
