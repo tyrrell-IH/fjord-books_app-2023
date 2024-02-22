@@ -51,11 +51,13 @@ class ReportsController < ApplicationController
 
   # DELETE /reports/1 or /reports/1.json
   def destroy
-    @report.destroy
-
     respond_to do |format|
-      format.html { redirect_to reports_url, notice: "Report was successfully destroyed." }
-      format.json { head :no_content }
+      if @report.user_id == current_user.id
+        @report.destroy
+        format.html { redirect_to reports_url, notice: "Report was successfully destroyed." }
+      else
+        format.html { redirect_back(fallback_location: root_path, notice: "Report was not destroyed.") }
+      end
     end
   end
 
