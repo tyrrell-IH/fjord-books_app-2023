@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     respond_to do |format|
       if @comment.save
-        format.html { redirect_back(fallback_location: root_path, notice: "comment saved") }
+        format.html { redirect_back(fallback_location: root_path, notice: t('controllers.common.notice_create', name: Comment.model_name.human)) }
       else
         format.html { redirect_back(fallback_location: root_path, alert: "comment not saved") }
       end
@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.user_id == current_user.id
         @comment.destroy
-        format.html { redirect_back(fallback_location: root_path, notice: "Report was successfully destroyed.") }
+        format.html { redirect_back(fallback_location: root_path, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)) }
       else
         format.html { redirect_back(fallback_location: root_path, notice: "Report was not destroyed.") }
       end
