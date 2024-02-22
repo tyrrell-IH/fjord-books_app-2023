@@ -20,6 +20,6 @@
 
   <p>
     <strong> <%= Report.human_attribute_name(:body) %>:</strong>
-    <%= report.body %>
+    <%= safe_join(report.body.split("\n"), tag(:br)) %>
   </p>
 </div>
