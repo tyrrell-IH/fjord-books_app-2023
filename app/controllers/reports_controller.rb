@@ -28,10 +28,8 @@ class ReportsController < ApplicationController
     respond_to do |format|
       if @report.save
         format.html { redirect_to report_url(@report), notice: t('controllers.common.notice_create', name: Report.model_name.human) }
-        format.json { render :show, status: :created, location: @report }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,10 +39,8 @@ class ReportsController < ApplicationController
     respond_to do |format|
       if (@report.user_id == current_user.id) && @report.update(report_params)
         format.html { redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human) }
-        format.json { render :show, status: :ok, location: @report }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @report.errors, status: :unprocessable_entity }
       end
     end
   end
