@@ -39,7 +39,7 @@ class ReportsController < ApplicationController
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
     respond_to do |format|
-      if @report.update(report_params)
+      if @report.update(report_params) && (@report.user_id == current_user.id)
         format.html { redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human) }
         format.json { render :show, status: :ok, location: @report }
       else
