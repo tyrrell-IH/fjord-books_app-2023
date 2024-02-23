@@ -84,4 +84,24 @@ end
   )
 end
 
+50.times do |n|
+  Comment.create!(
+    body: '面白かった',
+    commentable_id: n + 1,
+    commentable_type: 'Book',
+    user_id: n + 1,
+    created_at: Time.zone.now
+  )
+end
+
+50.times do |n|
+  Comment.create!(
+    body: 'よろしくお願いします！！',
+    commentable_id: n + 1,
+    commentable_type: 'Report',
+    user_id: n + 1,
+    created_at: Time.zone.now
+  )
+end
+
 puts '初期データの投入が完了しました。' # rubocop:disable Rails/Output
