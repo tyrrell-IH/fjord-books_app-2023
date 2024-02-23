@@ -77,10 +77,10 @@ end
 
 50.times do |n|
   Report.create!(
-    title: "タイトルサンプル#{n}",
-    body: "内容サンプル#{n}です。\n\nよろしくお願いします",
+    title: "サンプル#{n}",
+    body: "サンプル#{n}です。\n\nよろしくお願いします",
     user_id: User.all.ids.sample,
-    created_at: Time.now - 3600 * n
+    created_at: Time.zone.now - 3600 * n
   )
 end
 
