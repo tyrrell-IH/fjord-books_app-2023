@@ -84,22 +84,22 @@ end
   )
 end
 
-50.times do |n|
+Book.all.each do |b|
   Comment.create!(
     body: '面白かった',
-    commentable_id: n + 1,
+    commentable_id: b[:id],
     commentable_type: 'Book',
-    user_id: n + 1,
+    user_id: User.ids.sample,
     created_at: Time.zone.now
   )
 end
 
-50.times do |n|
+Report.all.each do |r|
   Comment.create!(
     body: 'よろしくお願いします！！',
-    commentable_id: n + 1,
+    commentable_id: r[:id],
     commentable_type: 'Report',
-    user_id: n + 1,
+    user_id: User.ids.sample,
     created_at: Time.zone.now
   )
 end
