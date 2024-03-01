@@ -5,9 +5,9 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     respond_to do |format|
       if @comment.save
-        format.html { redirect_back(fallback_location: root_path, notice: t('controllers.common.notice_create', name: Comment.model_name.human)) }
+        format.html { redirect_to @comment.commentable, notice: t('controllers.common.notice_create', name: Comment.model_name.human) }
       else
-        format.html { redirect_back(fallback_location: root_path, alert: t('controllers.common.notice_cannot_create', name: Comment.model_name.human)) }
+        format.html { redirect_to @comment.commentable, alert: t('controllers.common.notice_cannot_create', name: Comment.model_name.human) }
       end
     end
   end
