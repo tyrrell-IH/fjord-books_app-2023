@@ -41,7 +41,7 @@ class ReportsController < ApplicationController
       if (@report.user_id == current_user.id) && @report.update(report_params)
         format.html { redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human) }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render :edit, status: :forbidden }
       end
     end
   end
