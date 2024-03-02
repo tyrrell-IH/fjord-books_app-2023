@@ -25,36 +25,29 @@ class ReportsController < ApplicationController
   # POST /reports or /reports.json
   def create
     @report = current_user.reports.new(report_params)
-
-    respond_to do |format|
-      if @report.save
-        format.html { redirect_to report_url(@report), notice: t('controllers.common.notice_create', name: Report.model_name.human) }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @report.save
+      redirect_to report_url(@report), notice: t('controllers.common.notice_create', name: Report.model_name.human)
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /reports/1 or /reports/1.json
   def update
-    respond_to do |format|
-      if (@report.user_id == current_user.id) && @report.update(report_params)
-        format.html { redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human) }
-      else
-        format.html { render :edit, status: :forbidden }
-      end
+    if (@report.user_id == current_user.id) && @report.update(report_params)
+      redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human)
+    else
+      render :edit, status: :forbidden
     end
   end
 
   # DELETE /reports/1 or /reports/1.json
   def destroy
-    respond_to do |format|
-      if @report.user_id == current_user.id
-        @report.destroy
-        format.html { redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human) }
-      else
-        format.html { redirect_to @report, alert: t('controllers.common.notice_cannot_destroy', name: Report.model_name.human) }
-      end
+    if @report.user_id == current_user.id
+      @report.destroy
+      redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
+    else
+      redirect_to @report, alert: t('controllers.common.notice_cannot_destroy', name: Report.model_name.human)
     end
   end
 
