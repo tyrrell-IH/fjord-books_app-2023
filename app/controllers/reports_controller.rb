@@ -49,7 +49,6 @@ class ReportsController < ApplicationController
   # DELETE /reports/1 or /reports/1.json
   def destroy
     respond_to do |format|
-      binding.irb
       if @report.user_id == current_user.id
         @report.destroy
         format.html { redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human) }
