@@ -3,7 +3,7 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
-    reference_source = @comment.commentable
+    reference_source = comment_params[:commentable_type].constantize.find(comment_params[:commentable_id])
     if @comment.save
       redirect_to reference_source, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
