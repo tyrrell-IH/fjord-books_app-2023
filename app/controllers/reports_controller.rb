@@ -28,8 +28,12 @@ class ReportsController < ApplicationController
   end
 
   def update
-    if (@report.user_id == current_user.id) && @report.update(report_params)
-      redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human)
+    if @report.user_id == current_user.id
+      if @report.update(report_params)
+        redirect_to report_url(@report), notice: t('controllers.common.notice_update', name: Report.model_name.human)
+      else
+        render :edit, status: :unprocessable_entity
+      end
     else
       render :edit, status: :forbidden
     end
