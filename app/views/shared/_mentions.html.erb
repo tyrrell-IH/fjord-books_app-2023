@@ -1,0 +1,10 @@
+<div class="mentions-container">
+  <strong><%= Mention.model_name.human %></strong>
+  <ul>
+    <% report.mentioned_reports.each do |report| %>
+      <li>
+        <%= link_to report.title, report %>
+      </li>
+    <% end %>
+  </ul>
+</div>
