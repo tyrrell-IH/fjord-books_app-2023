@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Report < ApplicationRecord
+  include Mention::ManagementMentions
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :active_mentions, class_name: 'Mention', inverse_of: :mentioning, foreign_key: 'mentioning_id', dependent: :destroy
