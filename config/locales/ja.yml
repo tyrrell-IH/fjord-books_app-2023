@@ -202,7 +202,7 @@ ja:
       previous: '‹ 前'
       next: '次 ›'
       truncate: '…'
-    mention_relationship: "この%{name}に言及している%{name}"
+    relationship: "この%{name}に%{relationship}している%{name}"
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
