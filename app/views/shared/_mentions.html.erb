@@ -1,5 +1,5 @@
 <div class="mentions-container">
-  <strong><%= Mention.model_name.human %></strong>
+  <strong><%= t('views.mention_relationship', name: Report.model_name.human) %></strong>
   <ul>
     <% report.mentioned_reports.each do |report| %>
       <li>
