@@ -4,6 +4,8 @@ class Mention < ApplicationRecord
   belongs_to :mentioning, class_name: 'Report'
   belongs_to :mentioned, class_name: 'Report'
 
+  validates :mentioned_id, uniqueness: { scope: :mentioning_id }
+
   module ManagementMentions
     URL_REGEXP = %r{http://localhost:3000/reports/(\d+)}
     def search_mentioned_ids
