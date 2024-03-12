@@ -205,8 +205,10 @@ ja:
   controllers:
     common:
       notice_create: "%{name}が作成されました。"
+      notice_cannot_create: "%{name}が作成できませんでした。"
       notice_update: "%{name}が更新されました。"
       notice_destroy: "%{name}が削除されました。"
+      notice_cannot_destroy: "%{name}が削除できませんでした。"
   layouts:
     application:
       menu: メニュー

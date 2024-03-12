@@ -1,0 +1,27 @@
+<h2><%= Comment.model_name.human %></h2>
+
+<% @commentable.comment.each do |c| %>
+  <div class='comment-item'>
+    <p>
+      <strong><%= User.human_attribute_name(:name) %>:</strong>
+      <% if c.user.name.empty? %>
+        <%= link_to c.user.email, c.user %>
+      <% else %>
+        <%= link_to c.user.name, c.user %>
+      <% end %>
+    </p>
+
+    <p>
+      <strong><%= Comment.human_attribute_name(:created_at) %>:</strong>
+      <%= l(c.created_at, format: :long) %>
+    </p>
+
+    <p>
+      <strong><%= Comment.human_attribute_name(:body) %>:</strong>
+      <%= safe_join(c.body.split("\n"), tag(:br)) %>
+    </p>
+    <% if c.user.id == current_user.id %>
+      <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), [@commentable, c], method: :delete %>
+    <% end %>
+  </div>
+<% end %>

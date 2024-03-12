@@ -75,4 +75,33 @@ User.order(:id).each.with_index(1) do |user, n|
   user.avatar.attach(io: File.open(image_path), filename: 'avatar.png')
 end
 
+50.times do |n|
+  Report.create!(
+    title: "サンプル#{n}",
+    body: "サンプル#{n}です。\n\nよろしくお願いします",
+    user_id: User.all.ids.sample,
+    created_at: Time.zone.now - 3600 * n
+  )
+end
+
+Book.all.each do |b|
+  Comment.create!(
+    body: '面白かった',
+    commentable_id: b[:id],
+    commentable_type: 'Book',
+    user_id: User.ids.sample,
+    created_at: Time.zone.now
+  )
+end
+
+Report.all.each do |r|
+  Comment.create!(
+    body: 'よろしくお願いします！！',
+    commentable_id: r[:id],
+    commentable_type: 'Report',
+    user_id: User.ids.sample,
+    created_at: Time.zone.now
+  )
+end
+
 puts '初期データの投入が完了しました。' # rubocop:disable Rails/Output
