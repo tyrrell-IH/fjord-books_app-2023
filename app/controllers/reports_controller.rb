@@ -20,30 +20,34 @@ class ReportsController < ApplicationController
 
   def create
     @report = current_user.reports.new(report_params)
-
-    if @report.save
-      mentioned_ids = @report.search_mentioned_ids
-      @report.create_mentioning(mentioned_ids)
-      redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
-    else
-      render :new, status: :unprocessable_entity
+    mentioned_ids = @report.search_mentioned_ids
+    ActiveRecord::Base.transaction do
+      if @report.save
+        @report.create_mentioning(mentioned_ids)
+        redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
   def update
-    if @report.update(report_params)
-      @report.update_mentioning
-      redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
-    else
-      render :edit, status: :unprocessable_entity
+    ActiveRecord::Base.transaction do
+      if @report.update(report_params)
+        @report.update_mentioning
+        redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
+      else
+        render :edit, status: :unprocessable_entity
+      end
     end
   end
 
   def destroy
-    @report.mentioning_reports.destroy_all
-    @report.mentioned_reports.destroy_all
-    @report.destroy
-
+    ActiveRecord::Base.transaction do
+      @report.mentioning_reports.destroy_all
+      @report.mentioned_reports.destroy_all
+      @report.destroy
+    end
     redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
   end
 
