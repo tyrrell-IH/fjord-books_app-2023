@@ -9,7 +9,7 @@ class Mention < ApplicationRecord
   module ManagementMentions
     URL_REGEXP = %r{http://localhost:3000/reports/(\d+)}
     def search_mentioned_ids
-      self[:content].scan(URL_REGEXP).flatten.map(&:to_i)
+      self[:content].scan(URL_REGEXP).flatten.uniq.map(&:to_i)
     end
 
     def create_mentioning(mentioned_ids)
