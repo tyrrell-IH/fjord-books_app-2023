@@ -13,8 +13,9 @@ class Mention < ApplicationRecord
     end
 
     def create_mentioning(mentioned_ids)
-      mentioned_ids.each do |id|
-        active_mentions.create!(mentioned_id: id) if Report.find_by(id:)
+      existing_ids = Report.where(id: mentioned_ids).ids
+      existing_ids.each do |id|
+        active_mentions.create!(mentioned_id: id)
       end
     end
 
