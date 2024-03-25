@@ -20,14 +20,10 @@ class ReportsController < ApplicationController
 
   def create
     @report = current_user.reports.new(report_params)
-    mentioned_ids = @report.search_mentioned_ids
-    ActiveRecord::Base.transaction do
-      if @report.save
-        @report.create_mentioning(mentioned_ids)
-        redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
-      else
-        render :new, status: :unprocessable_entity
-      end
+    if @report.save_with_mentions
+      redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 

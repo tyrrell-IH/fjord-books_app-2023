@@ -25,6 +25,17 @@ class Mention < ApplicationRecord
       end
     end
 
+    def save_with_mentions
+      mentioned_ids = search_mentioned_ids
+      ActiveRecord::Base.transaction do
+        save
+        create_mentioning(mentioned_ids)
+        raise ActiveRecord::RecordInvalid
+      end
+    rescue ActiveRecord::RecordInvalid
+      false
+    end
+
     def update_mentioning
       mentioned_ids_in_content = search_mentioned_ids
       mentioned_ids_already_saved = mentioning_reports.ids
