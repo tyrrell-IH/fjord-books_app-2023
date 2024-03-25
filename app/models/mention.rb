@@ -30,7 +30,6 @@ class Mention < ApplicationRecord
       ActiveRecord::Base.transaction do
         save
         create_mentioning(mentioned_ids)
-        raise ActiveRecord::RecordInvalid
       end
     rescue ActiveRecord::RecordInvalid
       false
