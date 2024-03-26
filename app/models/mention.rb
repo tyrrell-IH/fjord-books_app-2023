@@ -41,5 +41,14 @@ class Mention < ApplicationRecord
       create_mentioning(mentioned_ids_in_content - mentioned_ids_already_saved)
       destroy_mentioning(mentioned_ids_already_saved - mentioned_ids_in_content)
     end
+
+    def update_with_mentions
+      ActiveRecord::Base.transaction do
+        save
+        update_mentioning
+      end
+    rescue ActiveRecord::RecordInvalid
+      false
+    end
   end
 end

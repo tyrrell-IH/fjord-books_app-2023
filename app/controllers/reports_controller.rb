@@ -28,13 +28,11 @@ class ReportsController < ApplicationController
   end
 
   def update
-    ActiveRecord::Base.transaction do
-      if @report.update(report_params)
-        @report.update_mentioning
-        redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    @report.assign_attributes(report_params)
+    if @report.update_with_mentions
+      redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
