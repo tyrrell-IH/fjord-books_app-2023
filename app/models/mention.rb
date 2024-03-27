@@ -28,7 +28,7 @@ class Mention < ApplicationRecord
     def save_with_mentions
       mentioned_ids = search_mentioned_ids
       ActiveRecord::Base.transaction do
-        save
+        save!
         create_mentions!(mentioned_ids)
       end
     rescue ActiveRecord::RecordInvalid
@@ -44,7 +44,7 @@ class Mention < ApplicationRecord
 
     def update_with_mentions
       ActiveRecord::Base.transaction do
-        save
+        save!
         update_mentions!
       end
     rescue ActiveRecord::RecordInvalid
