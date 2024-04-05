@@ -30,6 +30,20 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text '２回目の日報です。だんだんプラクティスに慣れてきました。'
   end
 
+  test 'should create report with mention' do
+    visit reports_url
+    click_on '日報の新規作成'
+
+    assert_difference 'ReportMention.count', 1 do
+      fill_in 'タイトル', with: '３回目の日報です'
+      fill_in '内容', with: '３回目の日報です。参考http://localhost:3000/reports/2'
+      click_on '登録する'
+    end
+    assert_text '日報が作成されました。'
+    assert_text '３回目の日報です'
+    assert_text '３回目の日報です。参考http://localhost:3000/reports/2'
+  end
+
   test 'should update Report' do
     visit report_url(@report)
     click_on 'この日報を編集'

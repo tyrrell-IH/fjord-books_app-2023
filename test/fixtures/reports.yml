@@ -1,6 +1,12 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 Alice_first_report:
+  id: 1
   user: Alice
   title: 最初の日報
   content: Aliceです。最初の日報です。
+Bob_first_report:
+  id: 2
+  user: Bob
+  title: 自己紹介
+  content: Bobです。￥
