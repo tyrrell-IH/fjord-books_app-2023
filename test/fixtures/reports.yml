@@ -1,12 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 Alice_report:
-  id: 1
   user: Alice
   title: 自己紹介
   content: Aliceです。
 Bob_report:
-  id: 2
   user: Bob
   title: 自己紹介
   content: Bobです。

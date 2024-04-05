@@ -36,12 +36,12 @@ class ReportsTest < ApplicationSystemTestCase
 
     assert_difference 'ReportMention.count', 1 do
       fill_in 'タイトル', with: '参照した日報'
-      fill_in '内容', with: 'Bobさんの日報です。http://localhost:3000/reports/2'
+      fill_in '内容', with: "Bobさんの日報です。http://localhost:3000/reports/#{reports(:Bob_report).id}"
       click_on '登録する'
     end
     assert_text '日報が作成されました。'
     assert_text '参照した日報'
-    assert_text 'Bobさんの日報です。http://localhost:3000/reports/2'
+    assert_text "Bobさんの日報です。http://localhost:3000/reports/#{reports(:Bob_report).id}"
   end
 
   test 'should update Report' do
@@ -63,13 +63,13 @@ class ReportsTest < ApplicationSystemTestCase
 
     assert_difference 'ReportMention.count',1 do
       fill_in 'タイトル', with: '自己紹介と応援'
-      # http://localhost:3000/reports/1は自身の日報なのでReportMention.countには影響しない。
-      fill_in '内容', with: 'Aliceです。Bobさんにも頑張って欲しい。http://localhost:3000/reports/2 http://localhost:3000/reports/1'
+      # http://localhost:3000/reports/#{reports(:Alice_report).id}は編集中のこの日報自身なのでReportMention.countには影響しない。
+      fill_in '内容', with: "Aliceです。Bobさんにも頑張って欲しい。http://localhost:3000/reports/#{reports(:Bob_report).id} http://localhost:3000/reports/#{reports(:Alice_report).id}"
       click_on '更新する'
     end
     assert_text '日報が更新されました。'
     assert_text '自己紹介と応援'
-    assert_text 'Aliceです。Bobさんにも頑張って欲しい。http://localhost:3000/reports/2 http://localhost:3000/reports/1'
+    assert_text "Aliceです。Bobさんにも頑張って欲しい。http://localhost:3000/reports/#{reports(:Bob_report).id} http://localhost:3000/reports/#{reports(:Alice_report).id}"
   end
 
   test 'should destroy Report' do
