@@ -9,16 +9,15 @@ class ReportsTest < ApplicationSystemTestCase
     fill_in 'Eメール', with: 'alice@example.com'
     fill_in 'パスワード', with: 'password'
     click_on 'ログイン'
+    assert_text 'ログインしました。'
   end
 
   test 'visiting the index' do
-    assert_text 'ログインしました。'
     visit reports_url
     assert_selector 'h1', text: '日報の一覧'
   end
 
   test 'should create report' do
-    assert_text 'ログインしました。'
     visit reports_url
     click_on '日報の新規作成'
 
@@ -32,7 +31,6 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test 'should update Report' do
-    assert_text 'ログインしました。'
     visit report_url(@report)
     click_on 'この日報を編集'
 
@@ -46,7 +44,6 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test 'should destroy Report' do
-    assert_text 'ログインしました。'
     visit report_url(@report)
     click_on 'この日報を削除'
 
