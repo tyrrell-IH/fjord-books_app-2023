@@ -8,3 +8,7 @@ Bob_report:
   user: Bob
   title: 自己紹介
   content: Bobです。
+Alice_report_with_mention:
+  user: Alice
+  title: 言及あり
+  content: Bobの日報へ言及あり。http://localhost:3000/reports/#{reports(:Bob_report).id}

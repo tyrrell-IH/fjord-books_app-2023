@@ -78,4 +78,14 @@ class ReportsTest < ApplicationSystemTestCase
 
     assert_text '日報が削除されました。'
   end
+
+  test 'should destroy Report with mention' do
+    visit report_url(reports(:Alice_report_with_mention))
+
+    assert_difference 'ReportMention.count',-1 do
+      click_on 'この日報を削除'
+    end
+
+    assert_text '日報が削除されました。'
+  end
 end
