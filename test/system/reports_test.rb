@@ -48,13 +48,28 @@ class ReportsTest < ApplicationSystemTestCase
     visit report_url(@report)
     click_on 'この日報を編集'
 
-    fill_in 'タイトル', with: 'プラクティスの進捗'
-    fill_in '内容', with: 'HTMLの課題を提出しました'
+    fill_in 'タイトル', with: '自己紹介と応援'
+    fill_in '内容', with: 'Aliceです。Bobさんにも頑張って欲しい'
     click_on '更新する'
 
     assert_text '日報が更新されました。'
-    assert_text 'プラクティスの進捗'
-    assert_text 'HTMLの課題を提出しました'
+    assert_text '自己紹介と応援'
+    assert_text 'Aliceです。Bobさんにも頑張って欲しい'
+  end
+
+  test 'should update Report add mention' do
+    visit report_url(@report)
+    click_on 'この日報を編集'
+
+    assert_difference 'ReportMention.count',1 do
+      fill_in 'タイトル', with: '自己紹介と応援'
+      # http://localhost:3000/reports/1は自身の日報なのでReportMention.countには影響しない。
+      fill_in '内容', with: 'Aliceです。Bobさんにも頑張って欲しい。http://localhost:3000/reports/2 http://localhost:3000/reports/1'
+      click_on '更新する'
+    end
+    assert_text '日報が更新されました。'
+    assert_text '自己紹介と応援'
+    assert_text 'Aliceです。Bobさんにも頑張って欲しい。http://localhost:3000/reports/2 http://localhost:3000/reports/1'
   end
 
   test 'should destroy Report' do
