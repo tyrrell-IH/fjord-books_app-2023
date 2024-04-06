@@ -2,11 +2,11 @@
 
 Alice_report:
   user: Alice
-  title: 自己紹介
+  title: Aliceの自己紹介
   content: Aliceです。
 Bob_report:
   user: Bob
-  title: 自己紹介
+  title: Bobの自己紹介
   content: Bobです。
 Alice_report_with_mention:
   user: Alice

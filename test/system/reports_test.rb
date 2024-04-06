@@ -91,6 +91,7 @@ class ReportsTest < ApplicationSystemTestCase
     click_on 'この日報を削除'
 
     assert_text '日報が削除されました。'
+    assert_no_text 'Aliceの自己紹介'
   end
 
   test 'should destroy Report with mention' do
