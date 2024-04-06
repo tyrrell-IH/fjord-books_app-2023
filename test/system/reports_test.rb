@@ -72,6 +72,20 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text "Aliceです。Bobさんにも頑張って欲しい。http://localhost:3000/reports/#{reports(:Bob_report).id} http://localhost:3000/reports/#{reports(:Alice_report).id}"
   end
 
+  test 'should update Report reduce mention' do
+    visit report_url(reports(:Alice_report_with_mention))
+    click_on 'この日報を編集'
+
+    assert_difference 'ReportMention.count', -1 do
+      fill_in 'タイトル', with: '言及なしの日報'
+      fill_in '内容', with: 'Bobの日報へ言及しないよう修正しました。'
+      click_on '更新する'
+      assert_text '日報が更新されました。'
+    end
+    assert_text '言及なしの日報'
+    assert_text 'Bobの日報へ言及しないよう修正しました。'
+  end
+
   test 'should destroy Report' do
     visit report_url(@report)
     click_on 'この日報を削除'
