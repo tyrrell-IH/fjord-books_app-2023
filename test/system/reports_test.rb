@@ -86,5 +86,7 @@ class ReportsTest < ApplicationSystemTestCase
       click_on 'この日報を削除'
       assert_text '日報が削除されました。'
     end
+
+    assert_no_text '言及ありの日報'
   end
 end

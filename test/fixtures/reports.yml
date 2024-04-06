@@ -10,5 +10,5 @@ Bob_report:
   content: Bobです。
 Alice_report_with_mention:
   user: Alice
-  title: 言及あり
+  title: 言及ありの日報
   content: Bobの日報へ言及あり。http://localhost:3000/reports/#{reports(:Bob_report).id}
