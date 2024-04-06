@@ -7,7 +7,6 @@ class ReportTest < ActiveSupport::TestCase
     user1 = User.create!(email: 'foo@example.com', password: 'password')
     user2 = User.create!(email: 'bar@example.com', password: 'password')
     report = user1.reports.create!(title: '初めまして', content: '初めての日報です')
-
     assert report.editable?(user1)
     assert_not report.editable?(user2)
   end
