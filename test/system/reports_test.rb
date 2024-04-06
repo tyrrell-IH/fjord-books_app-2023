@@ -61,7 +61,7 @@ class ReportsTest < ApplicationSystemTestCase
     visit report_url(@report)
     click_on 'この日報を編集'
 
-    assert_difference 'ReportMention.count',1 do
+    assert_difference 'ReportMention.count', 1 do
       fill_in 'タイトル', with: '自己紹介と応援'
       # http://localhost:3000/reports/#{reports(:Alice_report).id}は編集中のこの日報自身なのでReportMention.countには影響しない。
       fill_in '内容', with: "Aliceです。Bobさんにも頑張って欲しい。http://localhost:3000/reports/#{reports(:Bob_report).id} http://localhost:3000/reports/#{reports(:Alice_report).id}"
@@ -82,7 +82,7 @@ class ReportsTest < ApplicationSystemTestCase
   test 'should destroy Report with mention' do
     visit report_url(reports(:Alice_report_with_mention))
 
-    assert_difference 'ReportMention.count',-1 do
+    assert_difference 'ReportMention.count', -1 do
       click_on 'この日報を削除'
       assert_text '日報が削除されました。'
     end
