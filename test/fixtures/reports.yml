@@ -4,11 +4,3 @@ Alice_report:
   user: Alice
   title: Aliceの自己紹介
   content: Aliceです。
-Bob_report:
-  user: Bob
-  title: Bobの自己紹介
-  content: Bobです。
-Alice_report_with_mention:
-  user: Alice
-  title: 言及ありの日報
-  content: Bobの日報へ言及あり。http://localhost:3000/reports/#{reports(:Bob_report).id}
