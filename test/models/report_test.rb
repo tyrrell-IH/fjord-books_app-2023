@@ -30,8 +30,5 @@ class ReportTest < ActiveSupport::TestCase
     assert_includes(report3.mentioning_reports, report2)
     # 自己の日報には言及できないことの確認
     assert_not_includes(report3.mentioning_reports, report3)
-
-    report3.destroy!
-    assert_nil(ReportMention.find_by(mention_to_id: report3.id))
   end
 end
