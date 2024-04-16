@@ -18,19 +18,20 @@ class ReportTest < ActiveSupport::TestCase
 
   test '#save_mentions' do
     report1 = users(:Alice).reports.create!(title: 'Aliceの日報サンプル', content: 'サンプルです')
-    report2 = users(:Bob).reports.create!(title: 'Bobの日報サンプル', content: "http://localhost:3000/reports/#{report1.id}")
+    report2 = users(:Bob).reports.create!(title: 'Bobの日報サンプル', content: 'サンプルです')
+    report3 = users(:Carol).reports.create!(title: 'Carolの日報サンプル', content: "http://localhost:3000/reports/#{report1.id}")
 
-    assert_includes(report2.mentioning_reports, report1)
+    assert_includes(report3.mentioning_reports, report1)
 
-    report2[:content] = 'report1を参照しない'
-    report2.save!
+    report3.update!(content: "http://localhost:3000/reports/#{report2.id}
+                              http://localhost:3000/reports/#{report3.id}")
 
-    assert_not_includes(report2.reload.mentioning_reports, report1)
+    assert_not_includes(report3.reload.mentioning_reports, report1)
+    assert_includes(report3.mentioning_reports, report2)
+    # 自己の日報には言及できないことの確認
+    assert_not_includes(report3.mentioning_reports, report3)
 
-    report1[:content] = "http://localhost:3000/reports/#{report1.id}"
-    report1.save!
-
-    # 自己の日報に言及できないことの確認
-    assert_not_includes(report1.mentioning_reports, report1)
+    report3.destroy!
+    assert_nil(ReportMention.find_by(mention_to_id: report3.id))
   end
 end

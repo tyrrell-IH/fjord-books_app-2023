@@ -10,3 +10,6 @@ Alice:
 Bob:
   email: 'bob@example.com'
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+Carol:
+  email: 'carol@example.com'
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
